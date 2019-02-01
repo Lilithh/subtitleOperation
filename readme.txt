@@ -8,3 +8,5 @@
 
 
 修改
+
+多文件链接 g++ main.cpp fucSet.cpp -o main 或者 makefile
