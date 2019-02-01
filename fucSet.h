@@ -3,10 +3,10 @@
 
 
 //常量
-#define fileInName "subtitle.txt"       //字幕文件名
-#define fileOutChName "China.txt"        //汉语部分
-#define fileOutEnName "English.txt"        //英语部分
-#define fileName "pure.txt"          //合并字幕文件
+#define fileInName "./inAndOutFile/subtitle.txt"       //字幕文件名
+#define fileOutChName "./inAndOutFile/China.txt"        //汉语部分
+#define fileOutEnName "./inAndOutFile/English.txt"        //英语部分
+#define fileName "./inAndOutFile/pure.txt"          //合并字幕文件
 #define maxLine 10240                  //每行最大字符数
 #define Interval 3                   //中英间隔
 
