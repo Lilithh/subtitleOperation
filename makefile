@@ -9,4 +9,6 @@ fmerge.o : fmerge.cpp fucSet.h
 	g++ -c fmerge.cpp
 
 clean : 
-	rm main main.o fextract.o fmerge.o	   
+	rm main main.o fextract.o fmerge.o
+oclean :
+	rm China.txt English.txt pure.txt	   
