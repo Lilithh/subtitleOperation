@@ -11,4 +11,4 @@ fmerge.o : fmerge.cpp fucSet.h
 clean : 
 	rm main main.o fextract.o fmerge.o
 oclean :
-	rm China.txt English.txt pure.txt	   
+	rm ./ioFile/China.txt ./ioFile/English.txt ./ioFile/pure.txt	   
