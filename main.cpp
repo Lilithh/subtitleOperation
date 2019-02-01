@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "fucSet.h"
 
 #define fileInName "subtitle.txt"       //字幕文件名
 #define fileOutChName "China.txt"        //汉语部分
@@ -16,6 +17,7 @@
 using namespace std;
 
 int main(){
+    
     
 
     ofstream outfile1(fileOutChName);//实例化写入文件对象 并打开
@@ -71,9 +73,9 @@ int main(){
     }
     else cout << "初始文件打开失败" << endl;
     
-    /*
-        整合文件
-    */
+ 
+        //整合文件
+  
     ofstream outfile(fileName);
     ifstream infile1(fileOutChName);
     ifstream infile2(fileOutEnName);
@@ -103,6 +105,8 @@ int main(){
  需要调整 才能在显示中对齐，末端
  汉字内码由两个（三个？）ASCII码组成 且都小于0
 */
+    
+   
             int count = 0;
             //int xxplace = aa.find("·");
             for(int i = 0; i<aalen; ){
@@ -135,5 +139,58 @@ int main(){
     
     //string t1 = "测", t2 = "a", t3 = "\"", t4 = "-", t5 = " ", t6 = "·";
     //cout<<"测 "<<t1.size()<<"  a "<<t2.length()<<"  \" "<<t3.length()<<"  - "<<t4.length()<<" 空格 "<<t5.length()<<"  · "<<t6.length()<<endl;//测试字符lenth
+    
+    
+    //ever();
+    Ever e;
+    e.ok();
     return 1;
 }
+
+
+
+
+
+
+
+/**
+
+
+
+ofstream outfile(fileName);
+ifstream infile1(fileOutChName);
+ifstream infile2(fileOutEnName);
+char tem[maxLine];                  //暂存字符数组
+int k = 1;
+if(infile1.is_open() && infile2.is_open()) {
+    while(infile1.good() && infile2.good() && !infile1.eof() && !infile2.eof()){
+        string aa, bb;
+        memset(tem, 0, maxLine);
+        infile1.getline(tem, maxLine);
+        aa = tem;                       //得到一行汉语aa
+        memset(tem, 0, maxLine);
+        infile2.getline(tem, maxLine);
+        bb = tem;                        //得到一行英语bb
+        int aalen = aa.length();         //汉语长度
+        
+        int blocklen = maxlength-aalen + Interval;
+        //cout << aalen << " and " << blocklen << endl;
+        if(!aalen) continue;                              //空行的字符串 s[0]为空 以字符数组形式访问可以，以下面.append访问会报越界错误
+        for(int ver = 0; ver < blocklen; ver ++) {
+            aa.append(" ");                    //追加空格 形成统一结尾长度
+        }
+        string bbb = bb.substr(2);         //英语部分去除序号
+        //cout << bbb << endl;
+        aa += bbb;
+        //cout << "文件 " << aa << endl;
+        
+        outfile << aa << endl;           //整合行 输出到文件
+        }
+        cout << "合并结束" << endl;
+        } else cout << "写入文件再打开错误" << endl;
+        
+        infile1.close(); infile2.close(); outfile.close();
+        
+        cout << "合并字幕文件成功" << endl;
+
+**/
