@@ -26,6 +26,12 @@ int extractFile(){
             s = buf;                            //读一行 赋给s
             //对 s 进行操作
             if(s.rfind("Dialogue", 12) != -1){     //找到字幕起始行
+                if(s.find("*Default") != 34) {
+                    outfile1<< "......☢︎" << endl;
+                    outfile2<< "......" << endl;
+                    continue;
+                } //有的次要部分没有*，后面处理少一位会造成读半个汉字的乱码。 一般汉字部分乱码就是字符串截取位数不对导致截取半个汉字
+                //cout <<s.find("*Default")<<endl;
                 s = s.substr(63);              //去除前面多余部分 这里是63位（需调整）
                 if(s[0] != '{') {
                     //汉字部分
@@ -35,6 +41,7 @@ int extractFile(){
                     if(part1.find("摩登家庭")+1) continue;  //需要去除这一行，因为英语部分会读到汉语 导致转码问题。 找到的时候返回位置0，要加一
                     //outfile1 << part1 << endl;//测试
                     outfile1 << i << "  " << part1 << endl; //立即写入文件
+                    //cout << i << "   " << part1 << endl;
                     outfile1 << flush;   //保存？
                     i++; mergeCheckA++;   //合并行校验原值
                     if(part1.size() > maxlengthC) maxlengthC = part1.size();
