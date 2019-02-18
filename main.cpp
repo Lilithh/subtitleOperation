@@ -5,18 +5,20 @@
 
 using namespace std;
 
-int maxlength = 0;  //.h全局
+int maxlengthC = 0;
+int maxlengthE = 0;
+int mergeCheckA = 0;      //.h全局
+
 int main(){
     
-    bool f1 = extractFile();    //分离初始文件 得到中英字
-    bool f2 = mergeFile();      //合并文件
-
-    if(f1) cout << "提取操作完成" << endl;
+    int f1 = extractFile();    //分离初始文件 得到中英字
+    int f2 = mergeFile();      //合并文件
+    if(f1==1) cout << "提取操作完成" << endl;
     else {
         cout << "初始文件打开失败" << endl;
         return 0;
     }
-    if(f2) cout <<"合并结束"<<endl;
+    if(f2==1) cout <<"合并结束"<<endl;
     else {
         cout << "写入文件再打开失败" <<endl;
         return 0;

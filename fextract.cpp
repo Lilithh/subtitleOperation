@@ -36,14 +36,15 @@ int extractFile(){
                     //outfile1 << part1 << endl;//测试
                     outfile1 << i << "  " << part1 << endl; //立即写入文件
                     outfile1 << flush;   //保存？
-                    i++;
-                    if(part1.size() > maxlength) maxlength = s.size();
+                    i++; mergeCheckA++;   //合并行校验原值
+                    if(part1.size() > maxlengthC) maxlengthC = part1.size();
                     //英语部分
                     int q = s.find("{\\shad1}");
                     string part2 = s.substr(q+8);        //得到英语部分串
                     outfile2 << j << "  " << part2 << endl;   //立即写入文件
                     outfile2 << flush;   //保存？
                     j++;
+                    if(part2.size() > maxlengthE) maxlengthE = part2.size();
                 }
                 outfile1 << endl;
                 outfile2 << endl;            //冗余字幕 输出空行代替
