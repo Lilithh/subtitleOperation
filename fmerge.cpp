@@ -47,12 +47,14 @@ int mergeFile(){
             //cout << "汉字数" << count << endl;
             float showlen = 1.5 * count + aalen-(3*count);
             float blacklenC = (maxlengthC/2) - showlen + Interval;  //假设maxlen全汉字，算成显示长度 maxlenth/3 * 1.5
-            
+            float blacklenC_no_format = maxlengthC - aalen + Interval;  //不考虑显示问题
             float blacklenE = maxlengthE - bblen + Interval;    //英文在前的black
             if (prio == "CN") {
-                for(int ver = 0; ver < blacklenC+0.5; ver ++) {
-                    aa.append(" ");                    //追加空格 形成统一结尾长度
-                }
+                if(format) {
+                    for(int ver = 0; ver < blacklenC+0.5; ver ++) {
+                        aa.append(" ");                    //追加空格 形成统一结尾长度
+                    }
+                } else for(int ver = 0; ver < blacklenC_no_format; ver ++) aa.append(" ");
                 string bbb = "";
                 if(mergeCheckB<10) {
                     bbb = bb.substr(1);
